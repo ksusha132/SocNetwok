@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="socialNetwork@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="socialNetwork">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="blog"/>
+    <schema id="4" parent="1" name="db1"/>
+    <schema id="5" parent="1" name="dbchat"/>
+    <schema id="6" parent="1" name="dbksusha"/>
+    <schema id="7" parent="1" name="db_catalog"/>
+    <schema id="8" parent="1" name="English"/>
+    <schema id="9" parent="1" name="hello"/>
+    <schema id="10" parent="1" name="Homework"/>
+    <schema id="11" parent="1" name="hospital"/>
+    <schema id="12" parent="1" name="information_schema"/>
+    <schema id="13" parent="1" name="internet_shop"/>
+    <schema id="14" parent="1" name="lastbd"/>
+    <schema id="15" parent="1" name="miniblog"/>
+    <schema id="16" parent="1" name="mysql"/>
+    <schema id="17" parent="1" name="performance_schema"/>
+    <schema id="18" parent="1" name="registration_02"/>
+    <schema id="19" parent="1" name="TheProject"/>
+    <schema id="20" parent="1" name="thesystem"/>
+    <schema id="21" parent="1" name="Train"/>
+    <schema id="22" parent="1" name="train1"/>
+    <table id="23" parent="2" name="login"/>
+    <table id="24" parent="2" name="user"/>
+    <column id="25" parent="23" name="email">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="23" name="password">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <key id="28" parent="23" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="24" name="name">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="30" parent="24" name="second_name">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="31" parent="24" name="birth_date">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="32" parent="24" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="24" name="login_id">
+      <Position>5</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <index id="34" parent="24" name="FKr0shamf09rtlymwc9elplf8pf">
+      <ColNames>login_id</ColNames>
+    </index>
+    <key id="35" parent="24" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="36" parent="24" name="FKr0shamf09rtlymwc9elplf8pf">
+      <ColNames>login_id</ColNames>
+      <RefSchemaName>socialnetwork</RefSchemaName>
+      <RefTableName>login</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>

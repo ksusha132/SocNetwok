@@ -1,6 +1,7 @@
 package hello.models;
 
 import java.util.Date;
+import java.util.Set;
 import javax.persistence.*;
 
 
@@ -11,8 +12,8 @@ public class User {
     //columns
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "idUser")
+    private Long idUser;
 
     @Column(name = "name", nullable = true, insertable = true, updatable = true, length = 50)
     private String name;
@@ -29,58 +30,25 @@ public class User {
     @Column(name = "gender", nullable = true, insertable = true, updatable = true, length = 5)
     private String gender;
 
-    @Column(name = "height", nullable = true, insertable = true, updatable = true, length = 3)
-    private Integer height;
-
-    @Column(name = "weight", nullable = true, insertable = true, updatable = true, length = 3)
-    private Integer weight;
-
-    @Column(name = "smoking", nullable = true, insertable = true, updatable = true, length = 1)
-    private Boolean smoking;
-
-    @Column(name = "drinking", nullable = true, insertable = true, updatable = true, length = 20)
-    private String drinking;
-
-    @Column(name = "aboutMe", nullable = true, insertable = true, updatable = true, length = 255)
-    private String aboutMe;
-
-    @Column(name = "lookingFor", nullable = true, insertable = true, updatable = true, length = 225)
-    private String lookingFor;
-
-    @Column(name = "children", nullable = true, insertable = true, updatable = true, length = 1)
-    private Boolean children;
-
-    @Column(name = "wasMarried", nullable = true, insertable = true, updatable = true, length = 1)
-    private Boolean wasMarried;
 
     // constructor
     User() {
 
     }
 
-    User(Long id, String name, String secondName, Date birthDate) {
-        this.id = id;
+    User(Long idUser, String name, String secondName, Date birthDate) {
+        this.idUser = idUser;
         this.name = name;
         this.secondName = secondName;
         this.birthDate = birthDate;
     }
 
-    public User(String name, String secondName, Date birthDate, String photo, String gender, Integer height, Integer weight,
-                Boolean smoking, String drinking, String aboutMe, String lookingFor, Boolean children, Boolean wasMarried,
-                Login login) {
+    public User(String name, String secondName, Date birthDate, String photo, String gender, Login login) {
         this.name = name;
         this.secondName = secondName;
         this.birthDate = birthDate;
         this.photo = photo;
         this.gender = gender;
-        this.height = height;
-        this.weight = weight;
-        this.smoking = smoking;
-        this.drinking = drinking;
-        this.aboutMe = aboutMe;
-        this.lookingFor = lookingFor;
-        this.children = children;
-        this.wasMarried = wasMarried;
         this.login = login;
     }
 
@@ -89,15 +57,22 @@ public class User {
     @JoinColumn(name = "login_id")
     private Login login;
 
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<UserRoles> userRoles;
+
+
     //getters ans setters
 
-    public Long getId() {
-        return id;
+
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
+
 
     public String getName() {
         return name;
@@ -147,76 +122,10 @@ public class User {
         this.gender = gender;
     }
 
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Integer getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Integer weight) {
-        this.weight = weight;
-    }
-
-    public Boolean getSmoking() {
-        return smoking;
-    }
-
-    public void setSmoking(Boolean smoking) {
-        this.smoking = smoking;
-    }
-
-    public String getDrinking() {
-        return drinking;
-    }
-
-    public void setDrinking(String drinking) {
-        this.drinking = drinking;
-    }
-
-    public String getAboutMe() {
-        return aboutMe;
-    }
-
-    public void setAboutMe(String aboutMe) {
-        this.aboutMe = aboutMe;
-    }
-
-    public String getLookingFor() {
-        return lookingFor;
-    }
-
-    public void setLookingFor(String lookingFor) {
-        this.lookingFor = lookingFor;
-    }
-
-    public Boolean getChildren() {
-        return children;
-    }
-
-    public void setChildren(Boolean children) {
-        this.children = children;
-    }
-
-    public Boolean getWasMarried() {
-        return wasMarried;
-    }
-
-    public void setWasMarried(Boolean wasMarried) {
-        this.wasMarried = wasMarried;
-    }
 
     //comparators
 
     // age
-    //height
-    //district
-    //preferences
     //multiple comparator
 }
 

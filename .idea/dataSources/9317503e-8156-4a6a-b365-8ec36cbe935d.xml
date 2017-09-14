@@ -27,61 +27,122 @@
     <schema id="21" parent="1" name="Train"/>
     <schema id="22" parent="1" name="train1"/>
     <table id="23" parent="2" name="login"/>
-    <table id="24" parent="2" name="user"/>
-    <column id="25" parent="23" name="email">
+    <table id="24" parent="2" name="roles"/>
+    <table id="25" parent="2" name="user"/>
+    <table id="26" parent="2" name="user_roles"/>
+    <column id="27" parent="23" name="email">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="23" name="password">
+    <column id="28" parent="23" name="password">
       <Position>3</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="27" parent="23" name="id">
+    <column id="29" parent="23" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <key id="28" parent="23" name="PRIMARY">
+    <key id="30" parent="23" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="29" parent="24" name="name">
-      <Position>3</Position>
-      <DataType>varchar(50)|0</DataType>
+    <column id="31" parent="24" name="id_role">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="30" parent="24" name="second_name">
+    <column id="32" parent="24" name="name_role">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="33" parent="24" name="PRIMARY">
+      <ColNames>id_role</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="34" parent="25" name="name">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="31" parent="24" name="birth_date">
+    <column id="35" parent="25" name="second_name">
+      <Position>6</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="36" parent="25" name="birth_date">
       <Position>2</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="32" parent="24" name="id">
+    <column id="37" parent="25" name="login_id">
+      <Position>7</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="38" parent="25" name="id_user">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="33" parent="24" name="login_id">
-      <Position>5</Position>
-      <DataType>bigint(20)|0</DataType>
+    <column id="39" parent="25" name="gender">
+      <Position>3</Position>
+      <DataType>varchar(5)|0</DataType>
     </column>
-    <index id="34" parent="24" name="FKr0shamf09rtlymwc9elplf8pf">
+    <column id="40" parent="25" name="photo">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="41" parent="25" name="FKr0shamf09rtlymwc9elplf8pf">
       <ColNames>login_id</ColNames>
     </index>
-    <key id="35" parent="24" name="PRIMARY">
-      <ColNames>id</ColNames>
+    <key id="42" parent="25" name="PRIMARY">
+      <ColNames>id_user</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="36" parent="24" name="FKr0shamf09rtlymwc9elplf8pf">
+    <foreign-key id="43" parent="25" name="FKr0shamf09rtlymwc9elplf8pf">
       <ColNames>login_id</ColNames>
       <RefSchemaName>socialnetwork</RefSchemaName>
       <RefTableName>login</RefTableName>
       <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="44" parent="26" name="idur">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="45" parent="26" name="id_user">
+      <Position>3</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <column id="46" parent="26" name="id_role">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <index id="47" parent="26" name="FKok1v2uejpjcfqg8va888yvy0w">
+      <ColNames>id_user</ColNames>
+    </index>
+    <index id="48" parent="26" name="FK1v995xldvmr6w96c5feofx1gf">
+      <ColNames>id_role</ColNames>
+    </index>
+    <key id="49" parent="26" name="PRIMARY">
+      <ColNames>idur</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="50" parent="26" name="FK1v995xldvmr6w96c5feofx1gf">
+      <ColNames>id_role</ColNames>
+      <RefSchemaName>socialnetwork</RefSchemaName>
+      <RefTableName>roles</RefTableName>
+      <RefColNames>id_role</RefColNames>
+    </foreign-key>
+    <foreign-key id="51" parent="26" name="FKok1v2uejpjcfqg8va888yvy0w">
+      <ColNames>id_user</ColNames>
+      <RefSchemaName>socialnetwork</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>id_user</RefColNames>
     </foreign-key>
   </database-model>
 </dataSource>

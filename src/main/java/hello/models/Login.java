@@ -71,3 +71,9 @@ public class Login implements Serializable {
 }
 //LAZY = fetch when needed
 //EAGER = fetch immediately
+
+
+// check one to one
+// check one to many
+// check connections to db
+// make sql dialect
